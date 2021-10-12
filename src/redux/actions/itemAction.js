@@ -1,11 +1,12 @@
 import { SET_ITEMS, DELETE_ITEMS } from '../actionName'
+import config from '../../config'
 import axios from 'axios'
 
 export const setarticleitems =
   (search = 'movies', page = 1) =>
   async (dispatch) => {
     const { data } = await axios(
-      `https://newsapi.org/v2/everything?q=${search}&page=${page}&pageSize=20&apiKey=cad81f0ce5f2456c96008d977c4dd6f4`
+      `https://newsapi.org/v2/everything?q=${search}&page=${page}&pageSize=20&apiKey=${config.API_KEY}`
     )
     if ((data.status = 'ok')) {
       let ald = data.articles.filter((ds) => {
